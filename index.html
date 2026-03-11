@@ -74,7 +74,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
+  <title>RMRRT | RCILab at KHU</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -241,37 +241,35 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">RMRRT: Riemannian Barrier Metric RRT for Inequality-Aware Steering on Equality Manifolds</h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Minhyeong Kang</a></sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Sanghyun Kim</a><sup>*</sup>,</span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
+                    <span class="author-block">Kyung Hee University<br>Submitted to IEEE/ASME Transactions on Mechatronics (TMECH)</span>
                     <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- TODO: Update with your arXiv paper ID -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+                        <a href="paper/paper.pdf"
+                          target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fas fa-file-pdf"></i>
+                          </span>
+                          <span>Paper</span>
+                        </a>
+                      </span>
 
                     <!-- TODO: Add your supplementary material PDF or remove this section -->
                     <span class="link-block">
@@ -280,13 +278,13 @@
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
                       </span>
-                      <span>Supplementary</span>
+                      <span>Youtube</span>
                     </a>
                   </span>
 
                   <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/rcilab/rci_rmrrt" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -295,16 +293,6 @@
                   </a>
                 </span>
 
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
             </div>
           </div>
         </div>
@@ -321,11 +309,11 @@
       <!-- TODO: Replace with your teaser video -->
       <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
         <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
+        <source src="static/videos/panda_triple.mp4" type="video/mp4">
       </video>
       <!-- TODO: Replace with your video description -->
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        Real-world demonstration of RMRRT on a triple-arm Panda system cooperatively transporting a chair. The task involves simultaneous equality constraints from closed-chain grasp maintenance and inequality constraints from obstacle and self-collision avoidance. 
       </h2>
     </div>
   </div>
@@ -341,7 +329,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            This paper presents a novel motion planning framework for high-dimensional robotic systems subject to simultaneous equality and inequality constraints. Conventional sampling-based planners often exhibit inefficient exploration because they treat constraints separately: equality constraints via projection and inequality constraints via binary collision checking. To address this issue, we propose Riemannian Barrier Metric RRT (RMRRT), which unifies both constraints into a single geometric formulation. RMRRT constructs a Riemannian barrier metric on the tangent space of the equality manifold by integrating the null-space projection of the constraint Jacobian with the Hessian of a logarithmic barrier function. This metric guides the tree expansion by selecting steering directions that minimize the induced Riemannian norm, thereby naturally avoiding inequality constraints while strictly adhering to the equality manifold. Experimental results show that RMRRT significantly reduces collision-induced sample rejection and achieves superior planning efficiency and success rates compared to state-of-the-art constrained planners. Experiment videos and source code are available at: https://rcilab.github.io/rmrrt
           </p>
         </div>
       </div>
