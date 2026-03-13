@@ -245,9 +245,9 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Minhyeong Kang</a></sup>,</span>
+                <a href="mailto:kingtyphoon@khu.ac.kr" target="_blank">Minhyeong Kang</a></sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Sanghyun Kim</a><sup>*</sup>,</span>
+                  <a href="mailto:kim87@khu.ac.kr" target="_blank">Sanghyun Kim</a><sup>*</sup>,</span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
@@ -276,7 +276,7 @@
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
-                        <i class="fas fa-youtube"></i>
+                        <i class="fab fa-youtube"></i>
                       </span>
                       <span>Youtube</span>
                     </a>
@@ -316,6 +316,7 @@
     </div>
   </div>
 </section>
+
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
@@ -327,56 +328,186 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            This paper presents a novel motion planning framework for high-dimensional robotic systems subject to simultaneous equality and inequality constraints. Conventional sampling-based planners often exhibit inefficient exploration because they treat constraints separately: equality constraints via projection and inequality constraints via binary collision checking. To address this issue, we propose Riemannian Barrier Metric RRT (RMRRT), which unifies both constraints into a single geometric formulation. RMRRT constructs a Riemannian barrier metric on the tangent space of the equality manifold by integrating the null-space projection of the constraint Jacobian with the Hessian of a logarithmic barrier function. This metric guides the tree expansion by selecting steering directions that minimize the induced Riemannian norm, thereby naturally avoiding inequality constraints while strictly adhering to the equality manifold. Experimental results show that RMRRT significantly reduces collision-induced sample rejection and achieves superior planning efficiency and success rates compared to state-of-the-art constrained planners. Experiment videos and source code are available at: https://rcilab.github.io/rmrrt
+            This paper presents a motion planning framework that unifies equality and inequality constraints into a single geometric formulation for sampling-based planning in high-dimensional robotic systems. Conventional sampling-based planners often exhibit inefficient exploration because they treat constraints separately: equality constraints via projection and inequality constraints via binary collision checking. To address this issue, we propose Riemannian Barrier Metric RRT (RMRRT), which unifies both constraints into a single geometric formulation. RMRRT constructs a Riemannian barrier metric on the tangent space of the equality manifold by integrating the null-space projection of the constraint Jacobian with the Hessian of a logarithmic barrier function. This metric guides the tree expansion by selecting steering directions that minimize the induced Riemannian norm, thereby naturally avoiding inequality constraints while strictly adhering to the equality manifold. Experimental results demonstrate that RMRRT achieves a 100\% success rate across diverse constrained manipulation tasks in both simulation and real-world experiments, while reducing planning time relative to state-of-the-art constrained planners. Ablation studies further show that the proposed barrier metric reduces sample rejection and shortens path length. Experiment videos and source code are available at: https://rcilab.github.io/rmrrt
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <div class="content has-text-justified">
+      <p>
+        RMRRT constructs a Riemannian barrier metric on the tangent space of the equality-constrained manifold that encodes the local geometry induced by inequality constraints. This metric is integrated into both steering and nearest-neighbor selection, enabling inequality-aware exploration while strictly maintaining equality-manifold feasibility.
+      </p>
+    </div>
+    <div class="columns is-centered" style="margin-top:1.5rem;">
+      <div class="column is-10 has-text-centered">
+        <img src="static/images/fig2.png" alt="Conceptual illustration of inequality-induced geometry on an equality-constrained manifold" style="width:100%; border-radius:4px;"/>
+        <p class="has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
+          <b>(a)</b> Equality-constrained manifold under full admissibility. <b>(b)</b> The same manifold with infeasible regions (holes) induced by inequality constraints. RMRRT accounts for this geometry through a Riemannian metric defined on the tangent space.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered" style="margin-top:1.5rem;">
+      <div class="column is-10 has-text-centered">
+        <img src="static/images/fig3.png" alt="Riemannian metric-based steering and nearest-neighbor selection" style="width:100%; border-radius:4px;"/>
+        <p class="has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
+          <b>(a)</b> Metric-induced tangent-space steering biases expansion away from inequality boundaries. <b>(b)</b> Riemannian nearest-neighbor selection favors nodes that admit feasible, low-cost motions toward the target.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Image carousel -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <div class="content has-text-justified">
+      <p>
+        RMRRT achieves <b>100% success rate</b> across all scenarios while maintaining the lowest mean planning time compared to five state-of-the-art baselines. Each scenario was evaluated over 100 trials with a 300s timeout.
+      </p>
+    </div>
+    <div class="table-container" style="margin-top:1.5rem;">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Planner</th>
+            <th colspan="2" class="has-text-centered">Scenario 1</th>
+            <th colspan="2" class="has-text-centered">Scenario 2</th>
+            <th colspan="2" class="has-text-centered">Scenario 3</th>
+            <th colspan="2" class="has-text-centered">Scenario 4</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th class="has-text-centered">Time (s)</th>
+            <th class="has-text-centered">Succ.</th>
+            <th class="has-text-centered">Time (s)</th>
+            <th class="has-text-centered">Succ.</th>
+            <th class="has-text-centered">Time (s)</th>
+            <th class="has-text-centered">Succ.</th>
+            <th class="has-text-centered">Time (s)</th>
+            <th class="has-text-centered">Succ.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CBiRRT</td>
+            <td class="has-text-centered">0.35 &pm; 0.41</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">2.97 &pm; 4.48</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">3.06 &pm; 4.27</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">74.75 &pm; 118.59</td>
+            <td class="has-text-centered">90%</td>
+          </tr>
+          <tr>
+            <td>Atlas RRT</td>
+            <td class="has-text-centered">5.84 &pm; 12.63</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">48.55 &pm; 85.13</td>
+            <td class="has-text-centered">83%</td>
+            <td class="has-text-centered">35.12 &pm; 69.27</td>
+            <td class="has-text-centered">89%</td>
+            <td class="has-text-centered">10.02 &pm; 31.80</td>
+            <td class="has-text-centered">89%</td>
+          </tr>
+          <tr>
+            <td>TB-RRT</td>
+            <td class="has-text-centered">5.74 &pm; 16.75</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">37.71 &pm; 86.93</td>
+            <td class="has-text-centered">80%</td>
+            <td class="has-text-centered">48.83 &pm; 86.27</td>
+            <td class="has-text-centered">87%</td>
+            <td class="has-text-centered">15.80 &pm; 57.35</td>
+            <td class="has-text-centered">84%</td>
+          </tr>
+          <tr>
+            <td>PG-RRT</td>
+            <td class="has-text-centered">2.65 &pm; 6.64</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">4.49 &pm; 5.43</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">5.51 &pm; 10.41</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">32.37 &pm; 81.47</td>
+            <td class="has-text-centered">97%</td>
+          </tr>
+          <tr>
+            <td>LJCMP</td>
+            <td class="has-text-centered">0.41 &pm; 1.02</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">0.24 &pm; 0.53</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">0.48 &pm; 1.56</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">0.55 &pm; 1.69</td>
+            <td class="has-text-centered">100%</td>
+          </tr>
+          <tr style="background-color:#e8f5e9; font-weight:bold;">
+            <td>RMRRT (ours)</td>
+            <td class="has-text-centered">0.32 &pm; 0.34</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">0.18 &pm; 0.15</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">0.25 &pm; 0.26</td>
+            <td class="has-text-centered">100%</td>
+            <td class="has-text-centered">0.38 &pm; 0.51</td>
+            <td class="has-text-centered">100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Image grid 2x2 -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+      <h2 class="title is-3">Result Video</h2>
+      <div class="columns is-multiline is-centered">
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <img src="static/images/RMRRT_panda_orientation.gif" alt="Single-arm cabinet reaching with fixed orientation constraint" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
+            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
+              Single-arm cabinet reaching under a fixed end-effector orientation constraint (Scenario 1).
+            </h2>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <img src="static/images/RMRRT_dual_orientation.gif" alt="Dual-arm constrained transfer with orientation constraint" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
+            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
+              Dual-arm constrained transfer with a fixed orientation constraint (Scenario 3).
+            </h2>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <img src="static/images/RMRRT_panda_triple.gif" alt="Triple-arm cooperative manipulation" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
+            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
+              Triple-arm cooperative manipulation under closed-chain grasp and collision avoidance constraints (Scenario 4).
+            </h2>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <img src="static/images/RMRRT_h1_2.gif" alt="Humanoid dual-arm constrained transfer" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
+            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
+              Unitree H1-2 humanoid dual-arm constrained transfer through a narrow passages.
+            </h2>
+          </div>
+        </div>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
-
 
 
 
@@ -385,7 +516,7 @@
   <div class="hero-body">
     <div class="container">
       <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
+      <h2 class="title is-3">Video Summary</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           
@@ -401,63 +532,9 @@
 <!-- End youtube video -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
         <h2 class="title">BibTeX</h2>
@@ -474,7 +551,7 @@
   url={https://your-domain.com/your-project-page}
 }</code></pre>
     </div>
-</section>
+</section> -->
 <!--End BibTex citation -->
 
 
