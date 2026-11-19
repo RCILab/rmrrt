@@ -233,7 +233,10 @@
     <section class="page-section" id="beyond">
       <p class="eyebrow">Beyond the paper</p>
       <h2>Two humanoids, one tray</h2>
-      <p class="intro">A Unitree H1-2 and an IGRIS-C hold one tray with all four hands: four arms and 28 joints in a single closed chain, held by 18 equality constraints. They carry the tray from one side of a divider to the other, lifting it over the divider together. The same RMRRT and the same parameters as in the paper plan the motion (7.2&nbsp;s on this query; 6.7 to 8.4&nbsp;s with the other seeds); it is not part of the paper's experiments. The motion is post-processed for display: the path is shortened, the tray's route is smoothed, and the arms are re-traced along it, which removes the back-and-forth of the search. The numbers in the viewer are the planner's.</p>
+      <div class="intro">
+        <p>A Unitree H1-2 and an IGRIS-C lift a shared tray over a divider. Their four arms form a single closed chain with 28 joints, and 18 equality constraints keep all four grasps fixed relative to the tray. RMRRT searches the resulting constraint manifold for a collision-free motion that carries the tray to the other side.</p>
+        <p>This additional simulation demo uses the same RMRRT settings as the paper. Planning took 7.16&nbsp;s for the run shown and 6.7&ndash;8.4&nbsp;s with the other random seeds.</p>
+      </div>
       <div class="demo" data-demo data-datasets="humanoid_pair">
         <div class="demo-stage">
           <div class="demo-overlay"><div class="name">RMRRT</div><div class="live"></div></div>
@@ -264,7 +267,7 @@
           </div>
         </div>
       </div>
-      <p class="table-note">The trees are drawn where the tray would be at each node. The robots follow the found path after a shortcut pass for display; the planning time and the collision checks are those of the search.</p>
+      <p class="table-note">The trees are drawn where the tray would be at each node. For display, the found path is shortened and the arms are re-traced along the smoothed tray route; the planning time and the collision checks are those of the search.</p>
     </section>
 
     <!-- ============================= REAL WORLD ============================= -->
