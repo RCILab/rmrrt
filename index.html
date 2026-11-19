@@ -3,590 +3,312 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="RMRRT: Riemannian Barrier Metric RRT for Inequality-Aware Steering on Equality Manifolds ">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
+  <title>RMRRT | RCI Lab</title>
+  <meta name="description" content="RMRRT turns inequality margins into a Riemannian barrier metric on the tangent space of an equality-constrained manifold, so that a sampling-based planner steers away from obstacles, joint limits and self-collision before it hits them.">
+  <meta name="citation_title" content="RMRRT: Riemannian Barrier Metric RRT for Inequality-Aware Steering on Equality Manifolds">
+  <meta name="citation_author" content="Kang, Minhyeong">
+  <meta name="citation_author" content="Kim, Sanghyun">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="IEEE Transactions on Robotics">
+  <script>try { var t = localStorage.getItem('rmrrt-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>RMRRT | RCILab at KHU</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/site.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+  <script defer src="static/js/site.js"></script>
+  <script type="importmap">
   {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
   }
   </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+  <script type="module" src="static/js/demo.js"></script>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="header-links" aria-label="Main navigation">
+      <a href="#demo">Demo</a><a href="#findings">Findings</a><a href="#method">Method</a><a href="#beyond">Beyond the paper</a><a href="#real-world">Real world</a><a href="#bibtex">BibTeX</a>
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch the color theme"><span class="theme-dot" aria-hidden="true"></span><span data-theme-label>Dark</span></button>
+  </header>
 
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <!-- <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-              <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 1</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div> -->
-
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">RMRRT: Riemannian Barrier Metric RRT for Inequality-Aware Steering on Equality Manifolds</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="mailto:kingtyphoon@khu.ac.kr" target="_blank">Name 1</a></sup>,</span>
-                <span class="author-block">
-                  <a href="mailto:kim87@khu.ac.kr" target="_blank">Name 2</a><sup>*</sup>,</span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institute<br>Submitted to IEEE Transactions on Robotics (TRO)</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="paper/paper.pdf"
-                          target="_blank"
-                          class="external-link button is-normal is-rounded is-dark">
-                          <span class="icon">
-                            <i class="fas fa-file-pdf"></i>
-                          </span>
-                          <span>Paper</span>
-                        </a>
-                      </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-
-                      <a href="https://youtu.be/bnW1Kop4qRw" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fab fa-youtube"></i>
-                      </span>
-                      <span>Youtube</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/rcilab/rci_rmrrt" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Summary</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/bnW1Kop4qRw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            This paper presents a motion planning framework that unifies equality and inequality constraints into a single geometric formulation for sampling-based planning in high-dimensional robotic systems. Conventional sampling-based planners often exhibit inefficient exploration because they treat constraints separately: equality constraints via projection and inequality constraints via binary collision checking. To address this issue, we propose Riemannian Barrier Metric RRT (RMRRT), which unifies both constraints into a single geometric formulation. RMRRT constructs a Riemannian barrier metric on the tangent space of the equality manifold by integrating the null-space projection of the constraint Jacobian with the Hessian of a logarithmic barrier function. This metric guides the tree expansion by selecting steering directions that minimize the induced Riemannian norm, thereby naturally avoiding inequality constraints while strictly adhering to the equality manifold. Experimental results demonstrate that RMRRT achieves a 100% success rate across diverse constrained manipulation tasks in both simulation and real-world experiments, while reducing planning time relative to state-of-the-art constrained planners. Ablation studies further show that the proposed barrier metric reduces sample rejection and shortens path length. Experiment videos and source code are available at: https://rcilab.github.io/rmrrt
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Method Overview</h2>
-    <div class="content has-text-justified">
-      <p>
-        RMRRT constructs a Riemannian barrier metric on the tangent space of the equality-constrained manifold that encodes the local geometry induced by inequality constraints. This metric is integrated into both steering and nearest-neighbor selection, enabling inequality-aware exploration while strictly maintaining equality-manifold feasibility.
-      </p>
-    </div>
-    <div class="columns is-centered" style="margin-top:1.5rem;">
-      <div class="column is-10 has-text-centered">
-        <img src="static/images/fig2.png" alt="Conceptual illustration of inequality-induced geometry on an equality-constrained manifold" style="width:100%; border-radius:4px;"/>
-        <p class="has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-          <b>(a)</b> Equality-constrained manifold under full admissibility. <b>(b)</b> The same manifold with infeasible regions (holes) induced by inequality constraints. RMRRT accounts for this geometry through a Riemannian metric defined on the tangent space.
-        </p>
-      </div>
-    </div>
-    <div class="columns is-centered" style="margin-top:1.5rem;">
-      <div class="column is-10 has-text-centered">
-        <img src="static/images/fig3.png" alt="Riemannian metric-based steering and nearest-neighbor selection" style="width:100%; border-radius:4px;"/>
-        <p class="has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-          <b>(a)</b> Metric-induced tangent-space steering biases expansion away from inequality boundaries. <b>(b)</b> Riemannian nearest-neighbor selection favors nodes that admit feasible, low-cost motions toward the target.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results</h2>
-    <div class="content has-text-justified">
-      <p>
-        RMRRT achieves <b>100% success rate</b> across all scenarios while maintaining the lowest mean planning time compared to five state-of-the-art baselines. Each scenario was evaluated over 100 trials with a 300s timeout.
-      </p>
-    </div>
-    <div class="table-container" style="margin-top:1.5rem;">
-      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th>Planner</th>
-            <th colspan="2" class="has-text-centered">Scenario 1</th>
-            <th colspan="2" class="has-text-centered">Scenario 2</th>
-            <th colspan="2" class="has-text-centered">Scenario 3</th>
-            <th colspan="2" class="has-text-centered">Scenario 4</th>
-          </tr>
-          <tr>
-            <th></th>
-            <th class="has-text-centered">Time (s)</th>
-            <th class="has-text-centered">Succ.</th>
-            <th class="has-text-centered">Time (s)</th>
-            <th class="has-text-centered">Succ.</th>
-            <th class="has-text-centered">Time (s)</th>
-            <th class="has-text-centered">Succ.</th>
-            <th class="has-text-centered">Time (s)</th>
-            <th class="has-text-centered">Succ.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>CBiRRT</td>
-            <td class="has-text-centered">0.35 &pm; 0.41</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">2.97 &pm; 4.48</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">3.06 &pm; 4.27</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">74.75 &pm; 118.59</td>
-            <td class="has-text-centered">90%</td>
-          </tr>
-          <tr>
-            <td>Atlas RRT</td>
-            <td class="has-text-centered">5.84 &pm; 12.63</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">48.55 &pm; 85.13</td>
-            <td class="has-text-centered">83%</td>
-            <td class="has-text-centered">35.12 &pm; 69.27</td>
-            <td class="has-text-centered">89%</td>
-            <td class="has-text-centered">10.02 &pm; 31.80</td>
-            <td class="has-text-centered">89%</td>
-          </tr>
-          <tr>
-            <td>TB-RRT</td>
-            <td class="has-text-centered">5.74 &pm; 16.75</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">37.71 &pm; 86.93</td>
-            <td class="has-text-centered">80%</td>
-            <td class="has-text-centered">48.83 &pm; 86.27</td>
-            <td class="has-text-centered">87%</td>
-            <td class="has-text-centered">15.80 &pm; 57.35</td>
-            <td class="has-text-centered">84%</td>
-          </tr>
-          <tr>
-            <td>PG-RRT</td>
-            <td class="has-text-centered">2.65 &pm; 6.64</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">4.49 &pm; 5.43</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">5.51 &pm; 10.41</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">32.37 &pm; 81.47</td>
-            <td class="has-text-centered">97%</td>
-          </tr>
-          <tr>
-            <td>LJCMP</td>
-            <td class="has-text-centered">0.41 &pm; 1.02</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">0.24 &pm; 0.53</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">0.48 &pm; 1.56</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">0.55 &pm; 1.69</td>
-            <td class="has-text-centered">100%</td>
-          </tr>
-          <tr style="background-color:#e8f5e9; font-weight:bold;">
-            <td>RMRRT (ours)</td>
-            <td class="has-text-centered">0.32 &pm; 0.34</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">0.18 &pm; 0.15</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">0.25 &pm; 0.26</td>
-            <td class="has-text-centered">100%</td>
-            <td class="has-text-centered">0.38 &pm; 0.51</td>
-            <td class="has-text-centered">100%</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- Image grid 2x2 -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Result Video</h2>
-      <div class="columns is-multiline is-centered">
-        <div class="column is-half">
-          <div class="has-text-centered">
-            <img src="static/images/RMRRT_panda_orientation.gif" alt="Single-arm cabinet reaching with fixed orientation constraint" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
-            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-              Single-arm cabinet reaching under a fixed end-effector orientation constraint (Scenario 1).
-            </h2>
-          </div>
-        </div>
-        <div class="column is-half">
-          <div class="has-text-centered">
-            <img src="static/images/RMRRT_panda_dual_.gif" alt="Dual-arm constrained transfer with orientation constraint" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
-            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-              Dual-arm constrained transfer  (Scenario 2).
-            </h2>
-          </div>
-        </div>
-        <div class="column is-half">
-          <div class="has-text-centered">
-            <img src="static/images/RMRRT_dual_orientation.gif" alt="Dual-arm constrained transfer with orientation constraint" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
-            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-              Dual-arm constrained transfer with a fixed orientation constraint (Scenario 3).
-            </h2>
-          </div>
-        </div>
-        <div class="column is-half">
-          <div class="has-text-centered">
-            <img src="static/images/RMRRT_panda_triple.gif" alt="Triple-arm cooperative manipulation" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
-            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-              Triple-arm cooperative manipulation under closed-chain grasp and collision avoidance constraints (Scenario 4).
-            </h2>
-          </div>
-        </div>
-        <div class="column is-half">
-          <div class="has-text-centered">
-            <img src="static/images/RMRRT_h1_2.gif" alt="Humanoid dual-arm constrained transfer" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
-            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-              Unitree H1-2 humanoid dual-arm constrained transfer.
-            </h2>
-          </div>
-        </div>
-        <div class="column is-half">
-          <div class="has-text-centered">
-            <img src="static/images/dual_humanoid_RMRRT.gif" alt="Humanoid dual-arm constrained transfer" loading="lazy" style="height:300px; object-fit:contain; border-radius:4px;"/>
-            <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-              Cooperation with Unitree H1-2 and Roboros IGIRS-C.
-            </h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body has-text-centered">
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <source src="static/videos/panda_triple.mp4" type="video/mp4">
+  <!-- ================================ COVER =============================== -->
+  <section class="cover" id="top" aria-labelledby="project-title">
+    <div class="cover-media">
+      <video data-autoplay muted loop playsinline preload="metadata" poster="static/images/cover.jpg" aria-label="RMRRT on a humanoid, three arms on hardware, a triple-arm and a dual-arm simulation, and a sphere">
+        <source src="static/videos/cover.mp4" type="video/mp4">
       </video>
-      <h2 class="subtitle has-text-centered" style="font-size:0.9rem; margin-top:0.5rem;">
-        Real-world demonstration of RMRRT with three manipulators cooperatively transporting a chair under simultaneous equality and inequality constraints for closed-chain grasp maintenance and collision avoidance.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- End youtube video -->
-
-
-
-<!--BibTex citation -->
-  <!-- <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
+      <div class="cover-title">
+        <h1 id="project-title"><span class="name">RMRRT</span>: Riemannian Barrier Metric RRT for Inequality-Aware Steering on Equality Manifolds</h1>
+        <p class="venue">IEEE T-RO 2026</p>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
     </div>
-</section> -->
-<!--End BibTex citation -->
+    <div class="cover-copy">
+      <p class="authors">Minhyeong Kang<sup>1</sup> &nbsp;&middot;&nbsp; Sanghyun Kim<sup>1,2,&dagger;</sup></p>
+      <p class="affiliations"><sup>1</sup><a href="https://rcilab.khu.ac.kr/" target="_blank" rel="noopener">RCI Lab</a>, Department of Mechanical Engineering, Kyung Hee University &nbsp; <sup>2</sup>MetaMotionX, Inc. &nbsp; <sup>&dagger;</sup>Corresponding author</p>
+      <div class="publication-links">
+        <a class="button" href="static/paper/RMRRT_TRO2026.pdf" target="_blank" rel="noopener">Paper</a>
+        <a class="button button-primary" href="https://youtu.be/bnW1Kop4qRw" target="_blank" rel="noopener">Video</a>
+        <a class="button" href="https://github.com/rcilab/rci_rmrrt" target="_blank" rel="noopener">Code</a>
+        <a class="button" href="#demo">Interactive demo</a>
+        <a class="button" href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </section>
 
-
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            <a href="https://www.rcilab.khu.ac.kr" target="_blank">Robot Control and Interaction (RCI) Laboratory</a>, Kyung Hee University.
-            <br>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
-          </p>
+  <main class="page-content">
+    <!-- ============================== OVERVIEW ============================== -->
+    <section class="page-section reveal" id="overview">
+      <p class="eyebrow">Overview</p>
+      <h2>Inequality-Aware Exploration on Equality Manifolds</h2>
+      <div class="intro">
+        <p>Robots that carry one object with two or three arms, or keep a tool level, move on an <b class="t-eq">equality-constrained manifold</b>. Sampling-based planners keep them on it by projection, but they meet the <b class="t-ineq">inequality constraints</b> &mdash; collisions, joint limits, self-collision &mdash; only through binary validity checks: a step is tried, checked and thrown away. Near obstacles and in narrow passages, most of the search is spent this way.</p>
+        <p class="question">Can a planner on a constraint manifold see the inequality constraints before it runs into them?</p>
+        <p><b>RMRRT</b> turns every inequality margin that is close to its bound into a barrier term of a Riemannian metric, restricts that metric to the tangent space of the equality manifold, and uses it to steer each step and to decide which nodes to extend. The metric is built from the robot's own collision geometry with one parameter set for every task; feasibility is still decided by the standard collision check.</p>
+      </div>
+      <div class="teaser">
+        <div class="yt" data-yt="bnW1Kop4qRw" data-title="RMRRT overview video">
+          <button class="yt-facade" type="button" aria-label="Play the overview video">
+            <img src="https://i.ytimg.com/vi/bnW1Kop4qRw/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/bnW1Kop4qRw/hqdefault.jpg'">
+            <span class="yt-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Watch the overview video</span>
+          </button>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+    <!-- ========================== INTERACTIVE DEMO ========================== -->
+    <section class="page-section" id="demo">
+      <p class="eyebrow">Try the planners</p>
+      <h2>Interactive Demo</h2>
+      <p class="intro">Pick a problem and a planner to replay its search step by step, then watch the robot follow the path it found. Drag to rotate the view and scroll to zoom. On the sphere, the red balls are obstacles that leave two narrow gates between the start (green) and the goal (blue).</p>
+      <div class="demo" data-demo>
+        <div class="demo-stage">
+          <div class="demo-overlay"><div class="name">RMRRT</div><div class="live"></div></div>
+          <div class="demo-final"></div>
+          <button class="demo-load" type="button"><img src="static/images/sphere_rmrrt.jpg" alt=""><span>Load the demo</span></button>
+        </div>
+        <div>
+          <div class="panel">
+            <h4>Problem</h4>
+            <div class="demo-tabs" data-tabs></div>
+            <p class="demo-note" data-note>Load the demo to start.</p>
+          </div>
+          <div class="panel">
+            <h4>Planner</h4>
+            <div class="method-btns" data-methods></div>
+          </div>
+          <div class="panel">
+            <div class="play-row"><button type="button" data-play>Play</button><button type="button" data-replay>Replay</button><button type="button" data-view>View</button></div>
+            <label class="speed">Speed <input type="range" min="0.25" max="3" step="0.25" value="1" data-speed></label>
+          </div>
+          <div class="panel">
+            <ul class="legend">
+              <li><i style="background:#ff9a1a"></i>Start tree</li>
+              <li><i style="background:#4dccff"></i>Goal tree</li>
+              <li><i style="background:#ff33ff"></i>Rejected by the collision check</li>
+              <li><i style="background:#ffff33"></i>Path</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="table-wrap"><table class="data-table" data-compare></table></div>
+    </section>
 
-    <!-- End of Statcounter Code -->
+    <!-- ============================ KEY FINDINGS ============================ -->
+    <section class="page-section reveal" id="findings">
+      <p class="eyebrow">Key findings</p>
+      <h2>Fewer wasted collision checks, from a sphere to a humanoid</h2>
+      <div class="metric-grid">
+        <div class="metric-card"><div class="metric-value">5.4&times; faster</div><h3>Two narrow gates</h3><p>Than the same planner without the barrier, over 100 sphere instances.</p></div>
+        <div class="metric-card"><div class="metric-value">&minus;80% checks</div><h3>21-DoF triple arm</h3><p>2,998 instead of 15,211 collision checks per query among boxes.</p></div>
+        <div class="metric-card"><div class="metric-value">99&ndash;100%</div><h3>Five scenarios</h3><p>Queries solved in every robot scenario, 30 s each, one parameter set.</p></div>
+      </div>
+      <h3 style="margin-top:36px">Planning performance across four experimental scenarios</h3>
+      <div class="table-wrap">
+          <table class="data-table table2">
+            <thead>
+              <tr><th rowspan="2">Planner</th><th class="sep" colspan="3">Scenario 1</th><th class="sep" colspan="3">Scenario 2</th></tr>
+              <tr><th class="sep">Time (s)</th><th>Succ. (%)</th><th>Path len.</th><th class="sep">Time (s)</th><th>Succ. (%)</th><th>Path len.</th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><td colspan="7">Projection- and atlas-based constrained samplers</td></tr>
+              <tr><td>CBiRRT</td><td class="sep">0.36 &plusmn; 0.54</td><td>100</td><td>8.54 &plusmn; 3.68</td><td class="sep">2.97 &plusmn; 4.48</td><td>100</td><td>9.07 &plusmn; 2.75</td></tr>
+              <tr><td>Atlas RRT</td><td class="sep">1.04 &plusmn; 2.65</td><td>100</td><td>7.45 &plusmn; 3.08</td><td class="sep">3.87 &plusmn; 6.34</td><td>100</td><td>9.87 &plusmn; 3.22</td></tr>
+              <tr><td>Tangent Bundle RRT</td><td class="sep">0.87 &plusmn; 3.34</td><td>100</td><td>9.12 &plusmn; 3.05</td><td class="sep">3.03 &plusmn; 4.32</td><td>100</td><td>9.61 &plusmn; 3.83</td></tr>
+              <tr class="group"><td colspan="7">Metric-based local methods (with equality projection)</td></tr>
+              <tr><td>RMP</td><td class="sep">0.36 &plusmn; 0.18</td><td>56</td><td>5.00 &plusmn; 1.95</td><td class="sep">0.94 &plusmn; 0.59</td><td>80</td><td>6.57 &plusmn; 1.59</td></tr>
+              <tr><td>CHOMP</td><td class="sep">2.59 &plusmn; 2.90</td><td>38</td><td>10.34 &plusmn; 4.12</td><td class="sep">2.62 &plusmn; 3.73</td><td>67</td><td>12.61 &plusmn; 7.63</td></tr>
+              <tr><td>Artificial Potential Field</td><td class="sep">0.36 &plusmn; 0.16</td><td>54</td><td>5.08 &plusmn; 1.79</td><td class="sep">0.93 &plusmn; 0.54</td><td>84</td><td>6.84 &plusmn; 2.22</td></tr>
+              <tr class="group"><td colspan="7">Learning-based planners</td></tr>
+              <tr><td>LJCMP</td><td class="sep">1.17 &plusmn; 3.30</td><td>100</td><td>12.45 &plusmn; 4.71</td><td class="sep">0.28 &plusmn; 0.65</td><td>100</td><td>11.97 &plusmn; 4.45</td></tr>
+              <tr><td>CoMPNetX</td><td class="sep">0.27 &plusmn; 0.67</td><td>100</td><td>6.10 &plusmn; 2.11</td><td class="sep">3.01 &plusmn; 3.77</td><td>100</td><td>8.61 &plusmn; 2.86</td></tr>
+              <tr><td>Precomputed Graph RRT</td><td class="sep">0.42 &plusmn; 0.69</td><td>100</td><td>8.89 &plusmn; 3.79</td><td class="sep">2.72 &plusmn; 3.67</td><td>100</td><td>9.06 &plusmn; 2.62</td></tr>
+              <tr class="is-ours"><td>RMRRT (ours)</td><td class="sep best">0.09 &plusmn; 0.14</td><td>100</td><td>8.05 &plusmn; 3.33</td><td class="sep best">0.23 &plusmn; 0.31</td><td>100</td><td>10.92 &plusmn; 4.86</td></tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="table-wrap">
+          <table class="data-table table2">
+            <thead>
+              <tr><th rowspan="2">Planner</th><th class="sep" colspan="3">Scenario 3</th><th class="sep" colspan="3">Scenario 4</th></tr>
+              <tr><th class="sep">Time (s)</th><th>Succ. (%)</th><th>Path len.</th><th class="sep">Time (s)</th><th>Succ. (%)</th><th>Path len.</th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><td colspan="7">Projection- and atlas-based constrained samplers</td></tr>
+              <tr><td>CBiRRT</td><td class="sep">4.58 &plusmn; 9.20</td><td>100</td><td>9.53 &plusmn; 2.78</td><td class="sep">74.75 &plusmn; 118.59</td><td>90</td><td>10.67 &plusmn; 2.49</td></tr>
+              <tr><td>Atlas RRT</td><td class="sep">5.71 &plusmn; 9.27</td><td>100</td><td>9.56 &plusmn; 3.23</td><td class="sep">42.11 &plusmn; 105.49</td><td>92</td><td>10.54 &plusmn; 3.64</td></tr>
+              <tr><td>Tangent Bundle RRT</td><td class="sep">4.94 &plusmn; 10.11</td><td>100</td><td>9.80 &plusmn; 7.35</td><td class="sep">15.80 &plusmn; 57.35</td><td>87</td><td>11.01 &plusmn; 3.89</td></tr>
+              <tr class="group"><td colspan="7">Metric-based local methods (with equality projection)</td></tr>
+              <tr><td>RMP</td><td class="sep">1.11 &plusmn; 0.64</td><td>72</td><td>6.76 &plusmn; 1.23</td><td class="sep">4.51 &plusmn; 11.35</td><td>88</td><td>9.18 &plusmn; 1.64</td></tr>
+              <tr><td>CHOMP</td><td class="sep">1.55 &plusmn; 3.83</td><td>31</td><td>7.22 &plusmn; 3.99</td><td class="sep">0.64 &plusmn; 0.38</td><td>41</td><td>9.02 &plusmn; 1.31</td></tr>
+              <tr><td>Artificial Potential Field</td><td class="sep">1.06 &plusmn; 0.66</td><td>73</td><td>6.86 &plusmn; 1.76</td><td class="sep">2.23 &plusmn; 1.33</td><td>85</td><td>9.07 &plusmn; 1.51</td></tr>
+              <tr class="group"><td colspan="7">Learning-based planners</td></tr>
+              <tr><td>LJCMP</td><td class="sep">0.48 &plusmn; 1.56</td><td>100</td><td>12.31 &plusmn; 3.34</td><td class="sep">0.55 &plusmn; 1.69</td><td>100</td><td>16.44 &plusmn; 5.65</td></tr>
+              <tr><td>CoMPNetX</td><td class="sep">4.44 &plusmn; 6.29</td><td>100</td><td>8.91 &plusmn; 2.86</td><td class="sep">19.25 &plusmn; 52.08</td><td>100</td><td>9.80 &plusmn; 2.44</td></tr>
+              <tr><td>Precomputed Graph RRT</td><td class="sep">2.07 &plusmn; 3.29</td><td>100</td><td>9.51 &plusmn; 2.80</td><td class="sep">13.34 &plusmn; 35.11</td><td>100</td><td>11.41 &plusmn; 4.23</td></tr>
+              <tr class="is-ours"><td>RMRRT (ours)</td><td class="sep best">0.25 &plusmn; 0.26</td><td>100</td><td>12.63 &plusmn; 8.17</td><td class="sep best">0.31 &plusmn; 0.39</td><td>100</td><td>11.09 &plusmn; 3.42</td></tr>
+            </tbody>
+          </table>
+      </div>
+      <ul class="findings-summary">
+        <li><b>The metric steers around what it sees.</b> Steps bend away from nearby obstacles, joint limits and self-collision, so far fewer of them are rejected by the collision check.</li>
+        <li><b>Node selection saves checks the steering cannot.</b> A node is extended only when the step the metric predicts gets closer to the target; the rest cost no collision check at all.</li>
+        <li><b>One implementation for every planner.</b> All planners share the constraint, the MoveIt collision checker and the edge resolution, so the differences come from how they extend, not from the code.</li>
+      </ul>
+    </section>
 
-  </body>
-  </html>
+    <!-- =============================== METHOD =============================== -->
+    <section class="page-section reveal" id="method">
+      <p class="eyebrow">Method</p>
+      <h2>A barrier metric on the tangent space</h2>
+      <div class="grid-2">
+        <figure class="paper-figure"><img src="static/images/manifold_eq.png" alt="Equality-constrained manifold" loading="lazy"><figcaption>The closed chain defines a manifold \(\mathcal{M}\); without the metric, the inequalities are seen only when a sample collides.</figcaption></figure>
+        <figure class="paper-figure"><img src="static/images/manifold_ineq.png" alt="Inequality-induced geometry on the manifold" loading="lazy"><figcaption>The barrier metric reshapes the geometry of \(T_q\mathcal{M}\) near the boundaries before the planner reaches them.</figcaption></figure>
+      </div>
+
+      <div class="block grid-2">
+        <div class="method-text">
+          <span class="tag ineq">Inequality</span>
+          <h3>Barrier metric</h3>
+          <p>Each margin \(h_i\) below its activation width adds a rank-one term whose weight grows as the margin closes, so moving toward that boundary costs more than moving along it.</p>
+          <div class="equation">\(G(q)=\lambda I+\sum_i w_i(q)\,\nabla h_i(q)\nabla h_i(q)^\top\)</div>
+        </div>
+        <div class="method-text">
+          <span class="tag eq">Equality</span>
+          <h3>Projection onto the tangent space</h3>
+          <p>A \(G\)-orthogonal projection restricts the metric to \(T_q\mathcal{M}\), so the steps stay on the equality manifold to first order and are then corrected onto it.</p>
+          <div class="equation">\(P=I-G^{-1}J^\top\big(JG^{-1}J^\top\big)^{-1}J,\qquad M=P^\top G P\)</div>
+        </div>
+      </div>
+
+      <div class="block grid-2">
+        <figure class="paper-figure"><img src="static/images/metric_steering.png" alt="Metric-induced steering" loading="lazy"></figure>
+        <div class="method-text">
+          <h3>Centered steering</h3>
+          <p>The step follows the metric toward the target and is pushed away from the closest boundaries; every step has the same length \(\eta\).</p>
+          <div class="equation">\(v_\beta=P\,G^{-1}\big(\hat w-\beta\,\nabla\phi_c\big),\qquad q_{\mathrm{new}}=q+\eta\,\dfrac{v_\beta}{\lVert v_\beta\rVert}\)</div>
+        </div>
+      </div>
+
+      <div class="block grid-2">
+        <figure class="paper-figure"><img src="static/images/node_selection.png" alt="Riemannian node selection" loading="lazy"></figure>
+        <div class="method-text">
+          <h3>Riemannian node selection</h3>
+          <p>The nearest node is extended only if the step the metric predicts from it approaches the target; otherwise the iteration ends without a collision check.</p>
+          <div class="equation">\(\lVert\hat q-q_{\mathrm{rand}}\rVert<\lVert q_{\mathrm{near}}-q_{\mathrm{rand}}\rVert\)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== BEYOND THE PAPER ========================== -->
+    <section class="page-section" id="beyond">
+      <p class="eyebrow">Beyond the paper</p>
+      <h2>Two humanoids, one tray</h2>
+      <p class="intro">A Unitree H1-2 and an IGRIS-C hold one tray with all four hands: four arms and 28 joints in a single closed chain, held by 18 equality constraints. They carry the tray from one side of a divider to the other, lifting it over the divider together. The same RMRRT and the same parameters as in the paper plan the motion (7.2&nbsp;s on this query; 6.7 to 8.4&nbsp;s with the other seeds); it is not part of the paper's experiments. The motion is post-processed for display: the path is shortened, the tray's route is smoothed, and the arms are re-traced along it, which removes the back-and-forth of the search. The numbers in the viewer are the planner's.</p>
+      <div class="demo" data-demo data-datasets="humanoid_pair">
+        <div class="demo-stage">
+          <div class="demo-overlay"><div class="name">RMRRT</div><div class="live"></div></div>
+          <div class="demo-final"></div>
+          <button class="demo-load" type="button"><img src="static/images/humanoid_pair.jpg" alt=""><span>Load the demo</span></button>
+        </div>
+        <div>
+          <div class="panel">
+            <h4>Problem</h4>
+            <div class="demo-tabs" data-tabs></div>
+            <p class="demo-note" data-note>Load the demo to start.</p>
+          </div>
+          <div class="panel">
+            <h4>Planner</h4>
+            <div class="method-btns" data-methods></div>
+          </div>
+          <div class="panel">
+            <div class="play-row"><button type="button" data-play>Play</button><button type="button" data-replay>Replay</button><button type="button" data-view>View</button></div>
+            <label class="speed">Speed <input type="range" min="0.25" max="3" step="0.25" value="1" data-speed></label>
+          </div>
+          <div class="panel">
+            <ul class="legend">
+              <li><i style="background:#ff9a1a"></i>Start tree</li>
+              <li><i style="background:#4dccff"></i>Goal tree</li>
+              <li><i style="background:#ff33ff"></i>Rejected by the collision check</li>
+              <li><i style="background:#ffff33"></i>Path</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="table-note">The trees are drawn where the tray would be at each node. The robots follow the found path after a shortcut pass for display; the planning time and the collision checks are those of the search.</p>
+    </section>
+
+    <!-- ============================= REAL WORLD ============================= -->
+    <section class="page-section reveal" id="real-world">
+      <p class="eyebrow">Real world</p>
+      <h2>Three arms, one closed chain</h2>
+      <p class="intro">Three Franka arms hold one object in a closed chain and carry it among obstacles along the path planned by RMRRT.</p>
+      <figure class="video-card is-ours"><video data-autoplay muted loop playsinline preload="metadata" poster="static/images/real_triple.jpg"><source src="static/videos/real_triple.mp4" type="video/mp4"></video><figcaption><h4>Triple-arm transfer on hardware</h4></figcaption></figure>
+      <figure class="paper-figure" style="margin-top:24px"><img src="static/images/real_world.png" alt="Snapshots of the hardware experiments" loading="lazy"><figcaption>Snapshots of the planned motions executed on the robots.</figcaption></figure>
+    </section>
+
+    <!-- ========================= WHY BASELINES DIFFER ======================= -->
+    <section class="page-section reveal" id="baselines">
+      <p class="eyebrow">Appendix</p>
+      <h2>Why CBiRRT, TB-RRT and No-barrier differ</h2>
+      <p class="intro">All three grow trees on the same manifold with the same collision checker; they differ in how one extension reaches the manifold. One collision check costs the same in each, so the planning time follows the number of checks.</p>
+      <figure class="paper-figure"><img src="static/images/step_mechanisms.png" alt="Step mechanisms of CBiRRT, Tangent Bundle RRT and No-barrier RMRRT" loading="lazy"><figcaption>(a) CBiRRT steps in the ambient space and projects; near the projection of the target its steps shrink. (b) Tangent Bundle RRT defers the projection; a path valid on the charts can collide once projected and is checked again. (c) No-barrier RMRRT steps along the tangent space with a fixed length, so every node lies on the manifold.</figcaption></figure>
+    </section>
+
+    <!-- ================================ BIBTEX ============================== -->
+    <section class="page-section reveal" id="bibtex">
+      <p class="eyebrow">Citation</p>
+      <h2>BibTeX</h2>
+      <div class="bibtex">
+        <button class="copy-button" type="button" data-copy-bib>Copy</button>
+<pre id="bibtex-code"><code>@article{kang2026rmrrt,
+  title={{RMRRT}: Riemannian Barrier Metric {RRT} for Inequality-Aware Steering on Equality Manifolds},
+  author={Kang, Minhyeong and Kim, Sanghyun},
+  journal={IEEE Transactions on Robotics},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 RCI Lab, Kyung Hee University</span>
+    <span><a href="https://rcilab.khu.ac.kr/" target="_blank" rel="noopener">Robot Control and Intelligence Laboratory</a> &middot; Department of Mechanical Engineering</span>
+  </footer>
+
+  <dialog class="video-viewer" aria-label="Enlarged video">
+    <button class="video-viewer-close" type="button" aria-label="Close">&times;</button>
+    <video controls playsinline muted loop></video>
+    <p></p>
+  </dialog>
+</body>
+</html>
